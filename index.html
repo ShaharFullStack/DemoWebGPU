@@ -2,8 +2,8 @@
 <html lang="he">
   <head>
     <meta charset="utf-8" />
-    <title>הדגמה webGPU</title>
-    <meta name="apple-mobile-web-app-title" content="הדגמה webGPU" />
+    <title>ניסוי במניפולציה. / TSL / WebGPU</title>
+    <meta name="apple-mobile-web-app-title" content="ניסוי במניפולציה. / TSL / WebGPU" />
     <meta name="mobile-web-app-capable" content="yes" />
     <meta
       name="apple-mobile-web-app-status-bar-style"
@@ -11,9 +11,9 @@
     />
     <meta
       name="description"
-      content="ניסוי במניפולציה של רגלי נמלים רבות. / TSL / WebGPU"
+      content="ניסוי במניפולציה. / TSL / WebGPU"
     />
-    <link rel="shortcut icon" href="favicon.ico" />
+    <link rel="shortcut icon" href="./public/favicon.ico" />
     <link rel="stylesheet" href="style.css" />
     <meta name="viewport" content="width=600" />
   </head>
@@ -21,7 +21,7 @@
     <div id="container_1">
       <canvas
         data-engine="three.js r176 webgpu"
-        width="460"
+        width="0"
         height="0"
       ></canvas>
       <div class="stats-display">
@@ -160,7 +160,7 @@
       scene.backgroundNode = vec4(uni_bg_col, 1);
 
       const cam = new THREE.PerspectiveCamera(60, 1, 0.01, 100);
-      cam.position.set(-1, 0.5, 2.5);
+      cam.position.set(0, 0.1, 0);
 
 // =============================================================================== //
       const my_stats = new Stats();
@@ -168,22 +168,20 @@
 
 // =============================================================================== //
       const WC = 512;
-      const MAXPARTICLENUM = WC * WC;
-
-      const ctr = {
+      const MAXPARTICLENUM = WC * WC;      const ctr = {
         is_pp: true,
-        hue: 1,
-        timespeed: 1,
-        bias: 0.06,
+        hue: 0.54,
+        timespeed: 0.3,
+        bias: 0.0091,
 
-        count: 0.5 * MAXPARTICLENUM,
-        capsule: 1,
-        master_size: 1,
-        master_power: 1,
-        spin_scale: 1,
-        spin_speed: 1,
-        shaggy: 1,
-        master_metabolism: 1,
+        count: 20035,
+        capsule: 0.9,
+        master_size: 0.5,
+        master_power: 0.9,
+        spin_scale: 1.57,
+        spin_speed: 0.38,
+        shaggy: 1.6,
+        master_metabolism: 0.5,
       };
 
       // Create the main GUI controller
@@ -486,15 +484,15 @@
 
 // =============================================================================== //
       const my_orbit_controls = (o = new OrbitControls(cam, can));
-      o.minDistance = 1;
+      o.minDistance = 0.5;
       o.maxDistance = 5;
       o.minPolarAngle = 0.1;
-      o.maxPolarAngle = 3;
+      o.maxPolarAngle = 5;
       o.enableDamping = true;
       o.dampingFactor = 0.1;
 
 // =============================================================================== //
-      const tex_blue = new THREE.TextureLoader().load("IMG_7053.JPEG");
+      const tex_blue = new THREE.TextureLoader().load("");
       tex_blue.wrapS = tex_blue.wrapT = THREE.RepeatWrapping;
       tex_blue.minFilter = tex_blue.magFilter = THREE.NearestFilter;
 
@@ -769,7 +767,7 @@
         v_power.assign(
           uv()
             .x.add(uv().y)
-            .mul(987.654321)
+            .mul(387.654321)
             .fract()
             .add(1)
             .mul(uni_master_power)
