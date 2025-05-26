@@ -138,18 +138,18 @@
       const con = document.getElementById("container_1");
 
       //const dpr = 1;
-      const dpr = window.devicePixelRatio; //★ Mac זה 2. iPhone זה 3 וכו'.
+      const dpr = window.devicePixelRatio;
       const ren = new THREE.WebGPURenderer({
-        preserveDrawingBuffer: true, //★ זה יותר מהיר
+        preserveDrawingBuffer: true, 
       });
-      ren.toneMapping = THREE.NoToneMapping; //★ ←ברירת מחדל
+      ren.toneMapping = THREE.NoToneMapping;
       //ren.toneMapping = THREE.ACESFilmicToneMapping;
-      //ren.outputColorSpace = THREE.SRGBColorSpace; //★ ←ברירת מחדל
-      ren.outputColorSpace = ""; //★ ← כשמציינים כך, זה נראה כמו ברירת המחדל של WebGL
+      //ren.outputColorSpace = THREE.SRGBColorSpace;
+      ren.outputColorSpace = ""; 
       ren.setPixelRatio(dpr);
       ren.setAnimationLoop(tic);
       //ren.autoClear = false;
-      //ren.setClearColor( 0xffffff, 1); //★ 1 זה אלפא
+      //ren.setClearColor( 0xffffff, 1);
       //ren.getContext().getExtension( "EXT_frag_depth");
       //ren.debug.checkShaderErrors = true;
 
@@ -220,7 +220,7 @@
       const cameraFolder = gui.addFolder("בקרי מצלמה");
       const cameraPresets = {
         "מבט ישר": function () {
-          cam.position.set(-1, 0.5, 2.5);
+          cam.position.set(-1, 0.3, 2.2);
           my_orbit_controls.target.set(0, 0, 0);
           my_orbit_controls.update();
         },
